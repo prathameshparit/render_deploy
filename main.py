@@ -19,6 +19,10 @@ class ArticleInput(BaseModel):
 class ArticleOutput(BaseModel):
     recommended_articles: List[str]
 
+@app.get("/")
+def read_root():
+    return "Hello, World!"
+
 # Define the API endpoint
 @app.post("/recommend", response_model=ArticleOutput)
 async def recommend(articles: ArticleInput) -> ArticleOutput:
